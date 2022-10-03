@@ -9,7 +9,7 @@ fieldlist = { 'centerLoc' 'integer' []   [];   % sampling point
               'winLen'    'integer' []   [];   % sampling point
               'rng'       'integer' []   [];   % sampling point
               };   
-g = finputcheck( varargin, fieldlist);
+g = xcf_finputcheck( varargin, fieldlist);
 if ischar(g), error(g); end
 nbchan    = size(data,1);
 nbpnt     = size(data,2);
@@ -37,5 +37,6 @@ for s = 1:nbtrial
     data(ch,g.rng,s) = linspace(d(1),d(end),length(g.rng));
 end
 end
+
 
 end
