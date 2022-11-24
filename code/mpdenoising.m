@@ -1,7 +1,7 @@
 function [mpDataSel, mpDataRsd] = mpdenoising(data,varargin)
 % this function is used to denoising the stimulus artifact by using
 % matching pursuit (MP). Before run this function, you should first download the
-% EEGLAB and also the MP toolbox from https://github.com/supratimray/MP.
+% EEGLAB from https://eeglab.org and the MP toolbox from https://github.com/supratimray/MP.
 % For more information about the MP, please read the Chandran et al., 2016,
 % doi: 10.1523/JNEUROSCI.3633-15.2016
 
@@ -142,7 +142,7 @@ if g.calRetrive
             %if sum(~atomSelect)>0; datRsd = reconstructSignalFromAtomsMPP(gbData,mp.L,1,find(~atomSelect)); end
             %mpDataRsd(ch,:,s) = single(datRsd);
 
-            % show the MP results
+            % show the individual MP atoms
             mpdenoising_showfig;
         end
         end

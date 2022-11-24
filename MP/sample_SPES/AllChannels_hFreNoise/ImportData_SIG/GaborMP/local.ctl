@@ -4,13 +4,13 @@ Numb_inputs=1
 Numb_outputs=1
 Mode=parallel
 %INPUT
-Path=MP\sample_SPES\AllChannels_hFreNoise\ImportData_SIG
+Path=MP/sample_SPES/AllChannels_hFreNoise/ImportData_SIG
 Header_file=sig.hdr
 Calibrate=1
 Numb_points=128
 Shift_points=128
 %OUTPUT
-Path=MP\sample_SPES\AllChannels_hFreNoise\GaborMP
+Path=MP/sample_SPES/AllChannels_hFreNoise/GaborMP
 All_chans=1
 Numb_chans=1
 Start_chan=1
