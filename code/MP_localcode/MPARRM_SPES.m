@@ -6,7 +6,7 @@ function EEG = MPARRM_SPES(EEG,varargin)
 
 %% define parameter
 fieldlist = { 'mpWin'          'integer' []   [-5 5];                       % window (ms) for MP atom selection
-              'interpolateWin' 'integer' []   [-5 5];                       % window (ms) for linear interpolate
+              'interpolateWin' 'integer' []   [-2.5 2.5];                   % window (ms) for linear interpolate
               'iteration'      'integer' []   50;                           % iteration number for MP
               'minMPepochLen'  'integer' []   50;                           % min epoch length (ms) for MP
               'savePath'       'string'  []   [cd '/MP'];                   % folder path to save the results
