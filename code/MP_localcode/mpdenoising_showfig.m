@@ -5,6 +5,15 @@
 
 % Tao Xie, Mar/22/2022
 
+% show the MP results
+'figShow'         'integer' []   false;
+'figPath'         'string'  []   cd;
+'figChanNums'     'integer' []   1;
+'figChanLabs'     'cell'    []   {};
+'figTrialNums'    'integer' []   1;
+'figVisible'      'string'  []   'on';
+'figFormat'       'string'  []   'png';
+
 %% main
 % g.figVisible = 'on';
 if g.figShow && ismember(s, g.figTrialNums) && ismember(ch, g.figChanNums)

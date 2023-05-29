@@ -26,18 +26,15 @@ if EEGep.pnts>4096; error('!'); end
 if exist([g.savePath '/retrive_hFreNoise_' num2str(g.iteration) '.mat'],'file')~=2
     % Step 1: remove the period Noise 
     mpDataSel = mpdenoising(EEGep,g,'mpFreThre',g.step1FreThre,'mpRetrType','perioNoise');
-    if false; show_steps(EEGep,mpDataSel,1); end
     EEGep.data = EEGep.data-mpDataSel; 
 
     % Step 2: remove the background signal
     eeg = mplininterpolate(EEGep,'interpolateWin',g.interpolateWin);
     mpDataSel = mpdenoising(eeg,g,'mpFreThre',g.step2FreThre,'mpRetrType','lFreTemplate');
-    if false; show_steps(EEGep,mpDataSel,2); end
     EEGep.data = EEGep.data-mpDataSel;
 
     % Step 3: extract the stimulation artifact
     mpDataSel = mpdenoising(EEGep,g,'mpFreThre',g.step3FreThre,'mpRetrType','hFreNoise');
-    if false; show_steps(EEGep,mpDataSel,3); end
 end
 
 %% remove the stimulation artifact

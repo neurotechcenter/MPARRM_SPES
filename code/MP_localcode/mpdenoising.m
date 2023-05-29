@@ -5,24 +5,13 @@ function mpDataSel = mpdenoising(eeg,par,varargin)
 % For more information about the MP, please read the Chandran et al., 2016,
 % doi: 10.1523/JNEUROSCI.3633-15.2016
 
-% Tao Xie, May/12/2022
+% Tao Xie, May/29/2023
 % please email xie@neurotechcenter.org if you have any further question
-
-% mpDataSel: return reconstracted signal with selected atoms
-% mpDataRsd: reture reconstracted signal with residual atoms
 
 %% define parameter
 fieldlist = { 'mpFreThre'    'integer' []   [];           % frequency threthold
               'mpRetrType'   'string' []    '';           % retrive type: hFreNoise, perioNoise, lFreTemplate
               'reCalMP'      'integer' []   false;        % re-calculate the MP
-              % show the MP results
-              'figShow'         'integer' []   false;
-              'figPath'         'string'  []   cd;
-              'figChanNums'     'integer' []   1;
-              'figChanLabs'     'cell'    []   {};
-              'figTrialNums'    'integer' []   1;
-              'figVisible'      'string'  []   'on';
-              'figFormat'       'string'  []   'png';
               };   
 g = finputcheck(varargin, fieldlist);
 if ischar(g), error(g); end
@@ -113,9 +102,6 @@ if exist([par.savePath '/retrive_' g.mpRetrType '_' num2str(par.iteration) '.mat
         atomSelect = atomSelect(1:par.iteration);
         if sum(atomSelect)>0;  datSel = reconstructSignalFromAtomsMPP(gbData,mp.L,1,find(atomSelect)); end
         mpDataSel(ch,:,s) = single(datSel);
-
-        % show the individual MP atoms
-        mpdenoising_showfig;
     end
     end
 
@@ -125,8 +111,3 @@ if exist([par.savePath '/retrive_' g.mpRetrType '_' num2str(par.iteration) '.mat
 else
     load([par.savePath '/retrive_' g.mpRetrType '_' num2str(par.iteration) '.mat'],'mpDataSel');
 end
-
-
-%datRsd  = zeros(1,mp.L);
-%if sum(~atomSelect)>0; datRsd = reconstructSignalFromAtomsMPP(gbData,mp.L,1,find(~atomSelect)); end
-%mpDataRsd(ch,:,s) = single(datRsd);
